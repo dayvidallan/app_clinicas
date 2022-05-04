@@ -1,0 +1,63 @@
+    <!-- navbar -->
+    <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4 text-muted">
+
+
+            </div>
+            <div alingn="left" class="col-sm-4 offset-md-1 py-4">
+
+
+              <ul class="list-unstyled">
+                {% if user.is_authenticated %}
+
+                <li>
+                  <a class="text-white" href="#">
+                    Seja bem vindo(a) - {{ user.username }}
+                  </a>
+                </li>
+                <li>
+                  <a class="text-white" href="#">
+                    Editar Perfil
+                  </a>
+                </li>
+
+                <li>
+                  <a class="text-white" href="/admin" target="_blank">
+                    Administração
+                  </a>
+                </li>
+                <li>
+                  <a class="text-white" href="{% url 'auth-logout' %}">
+                    Sair
+                  </a>
+                </li>
+                {% else %}
+                <li>
+                  <a class="text-white" href="{% url 'auth-login' %}">
+                    Entrar...
+                  </a>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+          <span class="navbar-brand d-flex align-items-center">
+            <strong>
+              <a class="text-white" href="{% url 'agenda' %}">
+                Agenda de Eventos
+              </a>
+            </strong>
+          </span>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
