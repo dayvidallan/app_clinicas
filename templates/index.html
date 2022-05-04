@@ -2,34 +2,99 @@
 {% block content %}
   {% include "layouts/navbar.html" %}
     <main role="main">
-      <div class="jumbotron rounded-0 text-center ">
-        <h1 class="display-5">Clínica Odontológica</h1>
-      </div>
-      <div class="container text-center">
-        <div class="row">
-          <div class="col-4 col-md-2 offset-md-3">
-           <a href="#">
-              <img src="{% static 'new.png' %}" class="img-fluid"/>
-            </a>
-            <br/>
-            <h6 class="py-2">Pacientes</h6>
-          </div>
-          <div class="col-4 col-md-2">
-            <a href="{% url 'agenda-events-index' %}">
-              <img src="{% static 'today.png' %}" class="img-fluid"/>
-            </a>
-            <br/>
-            <h6 class="py-2">Agenda</h6>
-          </div>
-          <div class="col-4 col-md-2">
-            <a href="#">
-              <img src="{% static 'all.png' %}" class="img-fluid"/>
-            </a>
-            <br/>
-            <h6 class="py-2">Prontuário Geral</h6>
-          </div>
-        </div>
-      </div>
+
+
+       <section id="conteudo">
+                <div class="container-fluid">
+                  <div class="row">
+                    <section class="col-lg-12">
+
+
+                        <br>
+
+
+                                             <a href="/clientes">
+                                    <div class="col-lg-2 col-md-4">
+
+                                        <div class="panel panel-primary">
+                                            <div class="panel-heading">
+                                                <div class="row">
+                                                    <div class="col-xs-3">
+                                                        <i class="fa fa-users fa-3x"></i>
+                                                    </div>
+                                                    <div class="col-xs-9 text-right">
+                                                        <div class="huge"></div>
+                                                        <div><strong>Pacientes</strong></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+
+                            <a href="#">
+                                    <div class="col-lg-2 col-md-4">
+
+                                    <div class="panel panel-warning">
+                                        <div class="panel-heading">
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <i class="fa fa-file-o fa-3x"></i>
+                                                </div>
+                                                <div class="col-xs-9 text-right">
+                                                    <div class="huge"></div>
+                                                    <div><strong>Recibos </strong></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                         <a href="/parceiros">
+                            <div class="col-lg-2 col-md-4">
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <i class="fa fa-users fa-3x"></i>
+                                            </div>
+                                            <div class="col-xs-9 text-right">
+                                                <div class="huge"></div>
+                                                <div><strong>Prontuário Geral</strong></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="/agenda">
+                            <div class="col-lg-2 col-md-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <i class="fa fa-calendar fa-3x"></i>
+                                            </div>
+                                            <div class="col-xs-9 text-right">
+                                                <div class="huge"></div>
+                                                <div><strong>Agenda</strong></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                    </section>
+                  </div>
+                </div>
+
+
+
+
+
     </main>
 {% include "modals/new.html" %}
 {% endblock %}

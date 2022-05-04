@@ -26,6 +26,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #APP INSTALADOS
+    'fontawesomefree',
     #MEUS APPS
     'clinica',
     'funcionarios',
