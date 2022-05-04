@@ -1,0 +1,64 @@
+{% extends "base.html" %}{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% include "layouts/navbar.html" %}
+   <div id="content-stage">
+          <div class="container-fluid"></div>
+               <section id="migalhas" class="administracao">
+                  <div class="container-fluid">
+                      <div class="row">
+                          <div class="col-lg-12 col-md-12">
+                            <a href="/">Início <i class="fa fa-angle-right"></i></a>
+                            <a href="/recibo/">Recibo <i class="fa fa-angle-right"></i></a>
+                          </div>
+                      </div>
+                  </div>
+
+              </section>
+   </div>
+
+
+
+
+ <div  class="container">
+        <form method="post" enctype="multipart/form-data" xmlns="http://www.w3.org/1999/html">
+
+            <input type="hidden" name="_token" value="KqXYW17ieq2LPliZfWjnyrHlfMwZ6iQQPPglAh1k">
+              <div >
+
+                  <div class="row" style="padding-top: 60px;">
+
+                      <div class="col-lg-8">
+                          <div class="card">
+
+
+
+                              <div class="card-header">Recibo
+
+                          </a></div>
+                                {% csrf_token %}
+                                {{ form }}
+
+                                  <div class="row" style="padding-top: 30px;">
+                                          <div class="col-lg-8">
+
+                                              <div class="form-group row">
+                                                  <div class="col-md-11">
+
+                                                          <button type="submit" class="btn btn-secondary" id="btnContinuar" onclick="continuar(0);">
+                                                              Confirmar
+                                                          </button>
+
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </input>
+        </form>
+ </div>
+
+{% endblock %}

@@ -26,14 +26,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #APP INSTALADOS
+    # Apps de terceiros
+    'crispy_forms',
     'fontawesomefree',
     #MEUS APPS
     'clinica',
     'funcionarios',
-    'documentos',
+    'recibo',
     'clientes',
     'agenda',
+
 ]
 
 MIDDLEWARE = [

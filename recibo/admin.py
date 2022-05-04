@@ -5,6 +5,3 @@ from .models import Recibo
 
 admin.site.register(Recibo)
 
-
-
-

@@ -1,7 +1,6 @@
 {% extends "base.html" %}{% load static %}
 {% block content %}
     {% include "layouts/navbar.html" %}
-
    <div id="content-stage">
           <div class="container-fluid"></div>
                <section id="migalhas" class="administracao">
@@ -9,35 +8,45 @@
                       <div class="row">
                           <div class="col-lg-12 col-md-12">
                             <a href="/">Início <i class="fa fa-angle-right"></i></a>
-                            <a href="/agenda/">Agenda <i class="fa fa-angle-right"></i></a>
+
                           </div>
                       </div>
                   </div>
 
               </section>
    </div>
-
     <main role="main">
       <div class="card">
         <div class="card-header d-flex justify-content-between">
-          <h1>Eventos</h1>
+          <h1>Recibos</h1>
+          <div class="page-header">
+        <span class="pull-right">
+              <a  href="{% url 'recibo_add' %}">
+                  <button type="button" class="btn btn-secondary">
+                    <span class="fa fa-plus"></span> Adicionar
+                  </button>
+              </a>
+
+        </span>
+      </div>
         </div>
+
         <div class="card-body">
-        {% if events|length > 0 %}
+        {% if object_list %}
           <table class="table table-sm table-responsive-sm">
             <thead class="thead-dark">
               <tr>
-                <th>Data</th><th>Evento</th>
+                <th>Nome</th><th>CPF</th>
               </tr>
             </thead>
             <tbody>
-            {% for event in events %}
+            {% for object in object_list %}
               <tr class="{% if event.priority == '1' %} table-success{% elif event.priority == '2' %} table-warning{% elif event.priority == '3' %} table-danger{% else %} table-default{% endif %}">
                 <td>
-                  <a class="text-dark" href="{% url 'agenda-events-day' event.date.year event.date.month event.date.day %}">{{ event.date|date:"d/m/Y" }}</a>
+                  <a class="text-dark" href="#">{{ object.nome }}</a>
                 </td>
                 <td class="text-truncate">
-                  <a class="text-dark" href="{% url 'agenda-events-show' event.id %}">{{ event.event }}</a>
+                  <a class="text-dark" href="#">{{ object.cpf }}</a>
                 </td>
               </tr>
             {% endfor %}
