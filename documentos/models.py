@@ -13,6 +13,8 @@ class Recibo(models.Model):
     data = models.DateField(null=True, blank=True)
     valor = models.CharField(max_length=11, blank=True, null=True, verbose_name='R$ valor')
     observacao = models.TextField(null=True, blank=True)
+    recibo = models.BooleanField(default=False)
+
 
     class Meta:
         ordering = ('id',)

@@ -1,13 +1,13 @@
 from django import forms
 
-from .models import Recibos
+from .models import Recibo
 
 
 class ReciboForm(forms.ModelForm):
 
     class Meta:
-        model = Recibos
-        fields = 'nome', 'email', 'cpf', 'telefone', 'endereco', 'servico', 'data', 'valor', 'observacao'
+        model = Recibo
+        fields = 'nome', 'email', 'cpf', 'telefone', 'endereco', 'servico', 'data', 'valor', 'observacao', 'recibo'
 
 
 

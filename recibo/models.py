@@ -13,12 +13,13 @@ class Recibo(models.Model):
     data = models.DateField(null=True, blank=True)
     valor = models.CharField(max_length=11, blank=True, null=True, verbose_name='R$ valor')
     observacao = models.TextField(null=True, blank=True)
+    recibo = models.BooleanField(verbose_name='Gerar recibo?', default=False)
 
     class Meta:
         ordering = ('id',)
 
     def get_absolute_url(self):
-        return reverse_lazy('recibo_detail', kwargs={'pk': self.pk})
+        return reverse_lazy('recibo_list')
 
 
     def __str__(self):

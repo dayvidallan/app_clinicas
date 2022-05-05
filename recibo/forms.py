@@ -7,7 +7,7 @@ class ReciboForm(forms.ModelForm):
 
     class Meta:
         model = Recibo
-        fields = 'nome', 'email', 'cpf', 'telefone', 'endereco', 'servico', 'data', 'valor', 'observacao'
+        fields = 'nome', 'email', 'cpf', 'telefone', 'endereco', 'servico', 'data', 'valor', 'observacao', 'recibo'
 
 
 

@@ -18,7 +18,7 @@
     <main role="main">
       <div class="card">
         <div class="card-header d-flex justify-content-between">
-          <h1>Recibos</h1>
+          <h1>Financeiro</h1>
           <div class="page-header">
         <span class="pull-right">
               <a  href="{% url 'recibo_add' %}">
@@ -36,17 +36,34 @@
           <table class="table table-sm table-responsive-sm">
             <thead class="thead-dark">
               <tr>
-                <th>Nome</th><th>CPF</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Valor</th>
+                <th>Recibo</th>
               </tr>
             </thead>
             <tbody>
             {% for object in object_list %}
               <tr class="{% if event.priority == '1' %} table-success{% elif event.priority == '2' %} table-warning{% elif event.priority == '3' %} table-danger{% else %} table-default{% endif %}">
                 <td>
-                  <a class="text-dark" href="#">{{ object.nome }}</a>
+                  <a class="text-dark" href="{% url 'recibo_edit' object.id %}">{{ object.nome }}</a>
                 </td>
                 <td class="text-truncate">
                   <a class="text-dark" href="#">{{ object.cpf }}</a>
+                </td>
+                  <td class="text-truncate">
+                  <a class="text-dark" href="#">{{ object.valor}}</a>
+                </td>
+                <td class="text-truncate">
+                  {% if object.recibo  %}
+                    <a target="_blank" type="button" href="{% url 'recibo_detail' object.id %}">
+                        <button type="button" class="btn btn-dark">
+                           Recibo
+                        </button>
+                    </a>
+                  {% else %}
+                    <b>-</b>
+                  {% endif %}
                 </td>
               </tr>
             {% endfor %}
