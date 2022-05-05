@@ -19,7 +19,7 @@ class Paciente(models.Model):
         ordering = ('id',)
 
     def get_absolute_url(self):
-        return reverse_lazy('recibo_list')
+        return reverse_lazy('paciente_list')
 
 
     def __str__(self):

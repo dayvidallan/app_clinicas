@@ -7,6 +7,7 @@ urlpatterns = [
     path('agenda/', include('agenda.urls')),
     path('recibo/', include('recibo.urls')),
     path('funcionarios/', include('funcionarios.urls')),
+    path('prontuario/', include('clientes.urls')),
     path('admin/', admin.site.urls),
 
 

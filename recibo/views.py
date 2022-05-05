@@ -7,7 +7,7 @@ from django.db.models import Q, Count
 from django.contrib.auth.decorators import login_required
 import sys, codecs
 sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
-
+from funcionarios.models import Funcionario
 from .models import Recibo
 from .forms import ReciboForm
 
@@ -52,7 +52,12 @@ class ReciboCreate(CreateView):
 def recibo_detail(request, pk):
     template_name = 'recibo_detail.html'
     obj = Recibo.objects.get(pk=pk)
-    context = {'object': obj}
+    meu_perfil = Funcionario.objects.all()
+    context = {
+        'object': obj,
+        'perfil': meu_perfil
+
+    }
     return render(request, template_name, context)
 
 
@@ -73,4 +78,6 @@ class ReciboUpdate(UpdateView):
     model = Recibo
     template_name = 'recibo_form.html'
     form_class = ReciboForm
+
+
 

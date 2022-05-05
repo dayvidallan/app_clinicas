@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 
 
 
+
 class Recibo(models.Model):
     nome = models.CharField(max_length=100, unique=False)
     cpf = models.CharField(max_length=14, unique=False)
@@ -21,6 +22,7 @@ class Recibo(models.Model):
     def get_absolute_url(self):
         return reverse_lazy('recibo_list')
 
-
     def __str__(self):
         return self.nome
+
+

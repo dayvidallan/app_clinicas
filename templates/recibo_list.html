@@ -50,7 +50,7 @@
             {% for object in object_list %}
               <tr class="{% if event.priority == '1' %} table-success{% elif event.priority == '2' %} table-warning{% elif event.priority == '3' %} table-danger{% else %} table-default{% endif %}">
                 <td>
-                  <a class="text-dark" href="{% url 'recibo_edit' object.id %}">{{ object.nome }}</a>
+                  <a class="text" href="{% url 'recibo_edit' object.id %}">{{ object.nome }}</a>
                 </td>
                 <td class="text-truncate">
                   <a class="text-dark" href="#">{{ object.cpf }}</a>

@@ -9,6 +9,7 @@ class Funcionario(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
     clinica = models.ForeignKey(Clinica, on_delete=models.PROTECT)
     cpf = models.CharField(max_length=14, blank=True, null=True, verbose_name='Nº CPF')
+    cro = models.CharField(max_length=14, blank=True, null=True, verbose_name='Nº CRO')
     especialidade = models.CharField(max_length=200, null=True, blank=True)
     endereco = models.CharField(max_length=200, null=True, blank=True)
     bairro = models.CharField(max_length=200, null=True, blank=True)
