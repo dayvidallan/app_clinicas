@@ -40,6 +40,7 @@
           <table class="table table-sm table-responsive-sm">
             <thead class="thead-dark">
               <tr>
+                <th>Nº</th>
                 <th>Nome</th>
                 <th>CPF</th>
                 <th>Valor</th>
@@ -49,11 +50,14 @@
             <tbody>
             {% for object in object_list %}
               <tr class="{% if event.priority == '1' %} table-success{% elif event.priority == '2' %} table-warning{% elif event.priority == '3' %} table-danger{% else %} table-default{% endif %}">
-                <td>
-                  <a class="text" href="{% url 'recibo_edit' object.id %}">{{ object.nome }}</a>
+                 <td>
+                  <a class="text-dark" href="#">{{ object.paciente.id }}</a>
+                </td>
+                  <td>
+                  <a class="text" href="{% url 'recibo_edit' object.id %}">{{ object.paciente.nome }}</a>
                 </td>
                 <td class="text-truncate">
-                  <a class="text-dark" href="#">{{ object.cpf }}</a>
+                  <a class="text-dark" href="#">{{ object.paciente.cpf }}</a>
                 </td>
                   <td class="text-truncate">
                   <a class="text-dark" href="#">{{ object.valor}}</a>

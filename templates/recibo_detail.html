@@ -86,7 +86,12 @@
 
                             <h2 class="h6">
                                 <center>Recibo de Pagamento Nº {{ object.id }} </center></h2>
+                             {% for perfil in perfil %}
+                                <center>Endereço {{ perfil.endereco }} </center></h2>
+                             {% endfor %}
+                            <br>
 
+                            <br>
 
                             <h3 class="h8">
                                 Dados do recibo
@@ -104,15 +109,15 @@
                             <table class="table">
                                 <tr>
                                     <td>Nome</td>
-                                    <td class="col-value">{{ object }}</td>
+                                    <td class="col-value">{{ object.paciente.nome }}</td>
                                 </tr>
                                 <tr>
                                     <td>CPF/CNPJ</td>
-                                    <td class="col-value">{{ object.cpf }}</td>
+                                    <td class="col-value">{{ object.paciente.cpf }}</td>
                                 </tr>
                                 <tr>
                                     <td>Celular</td>
-                                    <td class="col-value">{{ object.telefone }}</td>
+                                    <td class="col-value">{{ object.paciente.telefone }}</td>
                                 </tr>
                             </table>
                         </div>
@@ -172,7 +177,7 @@
                             </p>
                             <div class="card-signature">
                                 {% for perfil in perfil %}
-                                    {{ perfil.nome }} <br> Nº CRO: {{ perfil.cro }}
+                                    {{ perfil.nome }} <br> CRO/{{ perfil.estado }}: {{ perfil.cro }}
                                 {% endfor %}
                             </div>
                         </div>

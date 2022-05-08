@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse_lazy
+from django.utils import timezone
 
 
 
@@ -12,7 +13,7 @@ class Paciente(models.Model):
     email = models.EmailField()
     telefone = models.CharField(max_length=100, unique=False, verbose_name='Nº telefone celular')
     endereco = models.CharField(max_length=100, unique=False)
-    data_consulta = models.DateField(null=True, blank=True)
+    data_consulta = models.DateTimeField(default=timezone.now)
     anamnesi = models.TextField(null=True, blank=True)
 
     class Meta:
