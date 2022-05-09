@@ -21,7 +21,7 @@
       </div>
       {% endif %}
       <div class="col-md-4 offset-md-4">
-        <form method="post" action="{% url 'auth-login' %}">
+        <form method="post" action="{% url 'login' %}">
           {% csrf_token %}
           <div class="form-group input-large">
             {{ form.username.label_tag }}

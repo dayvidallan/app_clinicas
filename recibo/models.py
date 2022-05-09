@@ -2,7 +2,6 @@ from django.db import models
 from django.urls import reverse_lazy
 from clientes.models import Paciente
 from django.utils import timezone
-import qrcode
 from io import BytesIO
 from django.core.files import File
 from PIL import Image, ImageDraw
