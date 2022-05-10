@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import Recibo, Financeiro
+from .models import Financeiros
 
 
 
-admin.site.register(Recibo)
-admin.site.register(Financeiro)
+
+admin.site.register(Financeiros)
 
 
 

@@ -86,10 +86,9 @@
 
                             <h2 class="h6">
                                 <center>Recibo de Pagamento Nº {{ object.id }} </center></h2>
-                             {% for perfil in perfil %}
-                                <center>Endereço {{ perfil.endereco }} </center></h2>
-                             {% endfor %}
-                            <br>
+
+                                <center>Endereço {{ object.profissional.endereco }} </center></h2>
+                                                        <br>
 
                             <br>
 
@@ -125,22 +124,22 @@
                             <h3 class="h8">
                                 Dados do beneficiário
                             </h3>
-                             {% for perfil in perfil %}
+
                                 <table class="table">
                                     <tr>
                                         <td>Nome</td>
-                                        <td class="col-value"><b>{{ perfil.nome }}</b></td>
+                                        <td class="col-value"><b>{{ object.profissional.nome }}</b></td>
                                     </tr>
                                     <tr>
                                         <td>CPF/CNPJ</td>
-                                        <td class="col-value"><b>{{ perfil.cpf }}</b></td>
+                                        <td class="col-value"><b>{{ object.profissional.cpf }}</b></td>
                                     </tr>
                                     <tr>
                                         <td>Cidade</td>
-                                        <td class="col-value"><b>(84) {{ perfil.nrTelCelular }}</b></td>
+                                        <td class="col-value"><b>(84) {{ object.profissional.nrTelCelular }}</b></td>
                                     </tr>
                                 </table>
-                             {% endfor %}
+
 
                         </div>
                         <div class="card-body">
@@ -176,9 +175,9 @@
                                 restando mais nada em aberto, referente ao que está descrito no documento.
                             </p>
                             <div class="card-signature">
-                                {% for perfil in perfil %}
-                                    {{ perfil.nome }} <br> CRO/{{ perfil.estado }}: {{ perfil.cro }}
-                                {% endfor %}
+
+                                    {{ object.profissional.nome }} <br> CRO/{{ object.profissional.estado }}: {{ object.profissional.cro }}
+
                             </div>
                         </div>
 

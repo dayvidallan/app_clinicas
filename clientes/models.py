@@ -4,6 +4,8 @@ from django.utils import timezone
 
 
 
+
+
 class Paciente(models.Model):
     nome = models.CharField(max_length=100, unique=False)
     cpf = models.CharField(max_length=14, unique=False, verbose_name='Nº CPF')
@@ -25,3 +27,5 @@ class Paciente(models.Model):
 
     def __str__(self):
         return self.nome
+
+

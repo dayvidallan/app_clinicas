@@ -14,7 +14,7 @@ from .forms import ReciboForm
 
 @login_required(login_url='login/')
 def recibo_list(request):
-    template_name = 'recibo_list.html'
+    template_name = 'financeiros_list.html'
     objects = Recibo.objects.order_by("id").all()
     count = Recibo.bjects.values("cpf").annotate(Count("id"))
     contador = {'count': count}
@@ -28,7 +28,7 @@ def recibo_list(request):
 
 class ReciboList(ListView):
     model = Recibo
-    template_name = 'recibo_list.html'
+    template_name = 'financeiros_list.html'
     paginate_by = 10
 
     def get_queryset(self):
@@ -58,7 +58,7 @@ def recibo_detail(request, pk):
 
 def recibo_add(request):
     form = ReciboForm(request.POST or None)
-    template_name = 'recibo_list.html'
+    template_name = 'financeiros_list.html'
 
     if request.method == 'POST':
         if form.is_valid():

@@ -14,7 +14,7 @@ class Funcionario(models.Model):
     endereco = models.CharField(max_length=200, null=True, blank=True)
     bairro = models.CharField(max_length=200, null=True, blank=True)
     cidade = models.CharField(max_length=200, null=True, blank=True)
-    estado = models.CharField(max_length=200, null=True, blank=True)
+    estado = models.CharField(max_length=2, null=True, blank=True)
     texto = models.TextField(null=True, blank=True)
     apresent = models.TextField(null=True, blank=True)
     email = models.EmailField(null=True, blank=True)

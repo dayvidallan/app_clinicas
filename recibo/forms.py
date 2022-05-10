@@ -1,20 +1,21 @@
-from django import forms
-from .models import Recibo, Financeiro
+from django.forms import ModelForm
+from .models import Financeiros
 from funcionarios.models import Funcionario
 
 
-class ReciboForm(forms.ModelForm):
+
+class FinanceirosForm(ModelForm):
+
 
     class Meta:
-        model = Recibo
-        fields = 'nome', 'email', 'cpf', 'telefone', 'endereco', 'servico', 'data', 'valor', 'observacao', 'recibo'
+        model = Financeiros
+        fields = 'profissional', 'paciente', 'servico', 'data', 'valor', 'observacao', 'recibo'
+
+        def __init__(self, user=None, *args, **kwargs):
+            super(FinanceirosForm, self).__init__(*args, **kwargs)
 
 
-class FinanceiroForm(forms.ModelForm):
 
-    class Meta:
-        model = Financeiro
-        fields = 'paciente', 'servico', 'data', 'valor', 'observacao', 'recibo'
 
 
 

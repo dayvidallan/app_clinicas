@@ -1,5 +1,10 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.views import View
+from django.views.generic import (
+    ListView
+
+)
 from .models import Funcionario
 
 
@@ -7,12 +12,12 @@ def home(request):
     return render(request, 'recibo_detail.html')
 
 
-def home(request):
+class home(ListView):
+    model = Funcionario
 
-    meu_perfil = Funcionario.objects.all()
+    def get_queryset(self):
+        empresa_logada = self.request.user.funcionarios.user
+        meu_perfil = Funcionario.objects.filter(
+                funcionario__user=empresa_logada)
 
-    data = {
-            'perfil': meu_perfil,
-            }
 
-    return render(request, 'recibo_detail.html', data)

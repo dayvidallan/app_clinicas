@@ -3,7 +3,7 @@ from .views import home
 
 
 urlpatterns = [
-    path('', home),
+    path('', home.as_view(), name='recibo'),
 
 
 

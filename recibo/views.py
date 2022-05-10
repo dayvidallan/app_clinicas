@@ -7,16 +7,16 @@ from django.contrib.auth.decorators import login_required
 import sys, codecs
 sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
 from funcionarios.models import Funcionario
-from .models import Recibo, Financeiro
-from .forms import ReciboForm, FinanceiroForm
+from .models import Financeiros
+from .forms import FinanceirosForm
 
 
 
 @login_required(login_url='login/')
 def recibo_list(request):
-    template_name = 'recibo_list.html'
-    objects = Financeiro.objects.order_by("id").all()
-    count = Financeiro.bjects.values("paciente.cpf").annotate(Count("id"))
+    template_name = 'financeiros_list.html'
+    objects = Financeiros.objects.order_by("id").all()
+    count = Financeiros.bjects.values("paciente.cpf").annotate(Count("id"))
     contador = {'count': count}
 
     search = request.GET.get('search')
@@ -26,15 +26,33 @@ def recibo_list(request):
     return render(request, template_name, context, contador)
 
 
+
+@login_required(login_url='login/')
+def recibo_list(request):
+    template_name = 'financeiros_list.html'
+    empresa_logada = request.funcionario.nome
+    objects = Funcionario.objects.filter(user=empresa_logada)
+    context = {
+
+        'object_list': objects
+
+    }
+    return render(request, template_name, context)
+
+
 class ReciboList(ListView):
-    model = Financeiro
-    template_name = 'recibo_list.html'
+    model = Financeiros
+    def get_queryset(self):
+        template_name = 'financeiros_list.html'
+        empresa_logada = self.request.user.profissional.nome
+        return Financeiros.objects.filter(
+            funcionario__nome=empresa_logada)
+
+    template_name = 'financeiros_list.html'
+
+
     paginate_by = 10
 
-    def get_queryset(self):
-        empresa_logada = self.request.user.paciente.clinica
-        return Financeiro.objects.filter(
-            paciente__clinica=empresa_logada)
 
     def get_queryset(self):
         queryset = super(ReciboList, self).get_queryset()
@@ -49,15 +67,16 @@ class ReciboList(ListView):
 
 
 class ReciboCreate(CreateView):
-    model = Financeiro
+    model = Financeiros
     template_name = 'recibo_form.html'
-    form_class = FinanceiroForm
+    form_class = FinanceirosForm
 
 
 def recibo_detail(request, pk):
     template_name = 'recibo_detail.html'
-    obj = Financeiro.objects.get(pk=pk)
-    meu_perfil = Funcionario.objects.all()
+    obj = Financeiros.objects.get(pk=pk)
+    empresa_logada = request.user
+    meu_perfil = Funcionario.objects.filter(user=empresa_logada)
     context = {
         'object': obj,
         'perfil': meu_perfil
@@ -66,9 +85,10 @@ def recibo_detail(request, pk):
     return render(request, template_name, context)
 
 
+
 def recibo_add(request):
-    form = FinanceiroForm(request.POST or None)
-    template_name = 'recibo_list.html'
+    form = FinanceirosForm(request.POST or None)
+    template_name = 'financeiros_list.html'
 
     if request.method == 'POST':
         if form.is_valid():
@@ -80,9 +100,9 @@ def recibo_add(request):
 
 
 class ReciboUpdate(UpdateView):
-    model = Financeiro
+    model = Financeiros
     template_name = 'recibo_form.html'
-    form_class = FinanceiroForm
+    form_class = FinanceirosForm
 
 
 
