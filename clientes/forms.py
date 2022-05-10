@@ -10,6 +10,6 @@ class PacienteForm(forms.ModelForm):
         fields = 'nome', 'email', 'cpf', 'rg', \
                  'data_nascimento', 'email', \
                  'telefone', 'endereco', \
-                 'data_consulta', 'anamnesi'
+                 'data_consulta', 'anamnesi', 'upload'
 
 

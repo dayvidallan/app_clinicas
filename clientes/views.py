@@ -50,7 +50,7 @@ class PacienteCreate(CreateView):
 
 
 def paciente_detail(request, pk):
-    template_name = 'recibo_detail.html'
+    template_name = 'paciente_detail.html'
     obj = Paciente.objects.get(pk=pk)
     meu_perfil = Funcionario.objects.all()
     context = {
@@ -80,4 +80,8 @@ class PacienteUpdate(UpdateView):
     form_class = PacienteForm
 
 
+class Upload(CreateView):
+    model = Paciente
+    template_name = 'paciente_form.html'
+    form_class = PacienteForm
 

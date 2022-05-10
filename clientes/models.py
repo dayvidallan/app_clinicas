@@ -3,9 +3,6 @@ from django.urls import reverse_lazy
 from django.utils import timezone
 
 
-
-
-
 class Paciente(models.Model):
     nome = models.CharField(max_length=100, unique=False)
     cpf = models.CharField(max_length=14, unique=False, verbose_name='Nº CPF')
@@ -17,6 +14,7 @@ class Paciente(models.Model):
     endereco = models.CharField(max_length=100, unique=False)
     data_consulta = models.DateTimeField(default=timezone.now)
     anamnesi = models.TextField(null=True, blank=True)
+    upload = models.FileField(upload_to='upload', null=True, blank=True)
 
     class Meta:
         ordering = ('id',)
