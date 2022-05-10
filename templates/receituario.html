@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{% url 'publication:export' %}" method="post" role="form">    {% csrf_token %}
+    <button type="submit" class="btn btn-success">
+        <i class="fa fa-download"></i> Generar y descargar .docx  </button></form>
+</body>
+</html>
