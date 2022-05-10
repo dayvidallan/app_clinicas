@@ -3,10 +3,7 @@ from django.urls import reverse_lazy
 from clientes.models import Paciente
 from funcionarios.models import Funcionario
 from django.utils import timezone
-from django.contrib.auth.models import User
-from io import BytesIO
-from django.core.files import File
-from PIL import Image, ImageDraw
+
 
 
 

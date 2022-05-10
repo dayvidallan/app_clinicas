@@ -27,19 +27,6 @@ def recibo_list(request):
 
 
 
-@login_required(login_url='login/')
-def recibo_list(request):
-    template_name = 'financeiros_list.html'
-    empresa_logada = request.funcionario.nome
-    objects = Funcionario.objects.filter(user=empresa_logada)
-    context = {
-
-        'object_list': objects
-
-    }
-    return render(request, template_name, context)
-
-
 class ReciboList(ListView):
     model = Financeiros
     def get_queryset(self):
