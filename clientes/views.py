@@ -26,20 +26,31 @@ def paciente_list(request):
     return render(request, template_name, context, contador)
 
 
-
-
-def paciente_list(request):
+class PacienteList(ListView):
+    model = Paciente
     template_name = 'paciente_list.html'
-    obj = Paciente.objects.all()
-    meu_perfil = Funcionario.objects.filter()
-    context = {
-        'object_list': obj,
-        'perfil': meu_perfil
+    paginate_by = 10
 
+    def get(self, request):
+        template_name = 'paciente_list.html'
+        empresa_logada = self.request.user.funcionario.user
+        perfil = Funcionario.objects.filter(user=empresa_logada)
+        contex = {
+
+            'perfil': perfil,
         }
-    return render(request, template_name, context)
+        return render(request, template_name, contex)
 
 
+    def get_queryset(self):
+        queryset = super(PacienteList, self).get_queryset()
+        search = self.request.GET.get('search')
+        if search:
+            queryset = queryset.filter(
+                Q(nome__icontains=search) |
+                Q(cpf__icontains=search)
+            )
+        return queryset
 
 
 class PacienteCreate(CreateView):

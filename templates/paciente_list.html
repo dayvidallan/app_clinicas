@@ -27,13 +27,25 @@
                       </button>
                   </a>
 
-
+                 {% for perfil in perfil %}
+                        {% if user.id == perfil.id %}
                           <tr>
+                             <a target="_blank" href="/media/{{ perfil.upload }}">
+                              <button type="button" class="btn btn-dark">
+                                 Receituário
+                              </button></a>
+                          </tr>
+                        {% else %}
+                            <tr>
                               <a  href="#">
                               <button type="button" class="btn btn-dark">
                                  Receituário
                               </button></a>
                           </tr>
+
+                        {% endif %}
+
+                {% endfor %}
 
             </span>
           </div>
