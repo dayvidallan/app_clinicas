@@ -93,3 +93,13 @@ class ReciboUpdate(UpdateView):
 
 
 
+
+#RELATORIO
+
+class RelatorioList(ListView):
+    model = Financeiros
+
+    template_name = 'relatorio_list.html'
+
+
+    paginate_by = 10

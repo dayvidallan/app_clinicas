@@ -20,6 +20,7 @@
 
 
   <center><h1>{{ object }}
+
     <span class="pull-right">
 
     </span>
@@ -27,7 +28,7 @@
 
 
 
-    <div class="card ">
+    <div class="container">
       <div class="card-header">
        <center><b>Prontuário Odontológico Nº: {{ object.id }}-{{ object.cpf }}</b> </center>
       </div>
@@ -100,6 +101,25 @@
             </button>
           </a>
       </div>
+        <div class="card ">
+
+            <div class="card "><b> <br>
+                 <div class="card-header">
+                            <th >Anamnesi:</th>
+
+                     </div></b>
+            </div>
+           <div class="card-body">
+            <b>
+
+                <tr>
+
+                        <a class="text-dark" target="_blank" href="#"><td>{{ object.anamnesi }}</td></a>
+                    <tr>
+                </tr>
+             </b>
+          </div>
+        </div>
 
     </div>
 

@@ -19,8 +19,8 @@ class Funcionario(models.Model):
     apresent = models.TextField(null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
     nrTelCelular = models.CharField(max_length=11, blank=True, null=True, verbose_name='Nº telefone celular')
-
-    imagem = models.ImageField(upload_to='perfils', null=True, blank=True)
+    upload = models.FileField(upload_to='upload', null=True, blank=True, verbose_name='Receituario')
+    imagem = models.ImageField(upload_to='perfils', null=True, blank=True, verbose_name='Logo')
 
     def __str__(self):
         return self.name

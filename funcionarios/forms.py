@@ -9,7 +9,7 @@ class FuncioarioForm(forms.ModelForm):
         model = Funcionario
         fields = 'nome', 'user', 'clinica', 'cpl', 'cro', \
                  'especialidade', 'endereco', 'bairro', 'cidade', \
-                 'estado', 'texto', 'apresent', 'email', 'nrTelCelular', \
+                 'estado', 'texto', 'apresent', 'email', 'nrTelCelular', 'upload' \
                  'imagem'
 
 

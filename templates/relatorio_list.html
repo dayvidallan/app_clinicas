@@ -8,6 +8,7 @@
                       <div class="row">
                           <div class="col-lg-12 col-md-12">
                             <a href="/">Início <i class="fa fa-angle-right"></i></a>
+                              <a href="/recibo">Financeiro <i class="fa fa-angle-right"></i></a>
 
                           </div>
                       </div>
@@ -17,31 +18,11 @@
    </div>
     <main role="main">
       <div class="card">
-        <div class="card-header d-flex justify-content-between">
-          <h1>Financeiro</h1>
-          <div class="page-header">
-            <span class="pull-right">
-                  <a  href="{% url 'recibo_add' %}">
-                      <button type="button" class="btn btn-secondary">
-                        <span class="fa fa-plus"></span> Adicionar
-                      </button>
-                  </a>
-                    <a  href="{% url 'relatorio_list' %}">
-                      <button type="button" class="btn btn-dark">
-                         Relatórios
-                      </button>
-                  </a>
-            </span>
-          </div>
-        </div>
-
         <div class="card-body">
         {% if object_list %}
 
 
-
             {% for object in object_list %}
-
 
                 {% if user.id == object.profissional.id %}
                         <table class="table table-sm table-responsive-sm">
@@ -62,7 +43,7 @@
                           <a class="text-dark" href="#">{{ object.id }}</a>
                         </td>
                           <td>
-                          <a class="text" href="{% url 'recibo_edit' object.id %}">{{ object.paciente.nome }}</a>
+                          <a class="text-dark" href="#">{{ object.paciente.nome }}</a>
                         </td>
                         <td class="text-truncate">
                           <a class="text-dark" href="#">{{ object.paciente.cpf }}</a>
@@ -70,15 +51,14 @@
                           <td class="text-truncate">
                           <a class="text-dark" href="#">{{ object.valor}}</a>
                         </td>
-                        <td class="text-truncate">
                           {% if object.recibo  %}
-                            <a target="_blank" type="button" href="{% url 'recibo_detail' object.id %}">
-                                <button type="button" class="btn btn-dark">
-                                   Recibo
-                                </button>
-                            </a>
+                            <td class="text-truncate">
+                              <a class="text-dark" href="#">{{ object.valor}}</a>
+                            </td>
                           {% else %}
-                            <b>-</b>
+                            <td class="text-truncate">
+                              <a class="text-dark" href="#">-</a>
+                            </td>
                           {% endif %}
                      {% else %}
 
