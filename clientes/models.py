@@ -14,7 +14,7 @@ class Paciente(models.Model):
     endereco = models.CharField(max_length=100, unique=False)
     data_consulta = models.DateTimeField(default=timezone.now)
     anamnesi = models.TextField(null=True, blank=True)
-    upload = models.FileField(upload_to='upload', null=True, blank=True)
+    upload = models.FileField(upload_to='perfil', null=True, blank=True)
 
     class Meta:
         ordering = ('id',)
