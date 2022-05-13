@@ -31,7 +31,7 @@
 
                         {% if user.id == perfil.id %}
                           <tr>
-                             <a target="_blank" href="/media/{{ perfil.upload }}">
+                             <a target="_blank" href="{{ perfil.upload.url }}">
                               <button type="button" class="btn btn-dark">
                                  Receituário
                               </button></a>
