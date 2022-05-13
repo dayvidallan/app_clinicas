@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 from decouple import config
 from dj_database_url import parse as dburl
-import django_heroku
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -147,7 +147,6 @@ LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
 
-django_heroku.settings(locals())
 
 AWS_ACCESS_KEY_ID = 'AKIA2REO4SX4JQAUEIYL'
 AWS_SECRET_ACCESS_KEY = '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'
