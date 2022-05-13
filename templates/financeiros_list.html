@@ -74,18 +74,22 @@
                             <td class="text-truncate">
                               <a class="text-dark" href="#">{{ object.valor}}</a>
                             </td>
+                            <td class="text-truncate">
+                                <a target="_blank" type="button" href="{% url 'recibo_detail' object.id %}">
+                                    <button type="button" class="btn btn-dark">
+                                       Recibo
+                                    </button>
+                                </a>
+                              </td>
                           {% else %}
                             <td class="text-truncate">
                               <a class="text-dark" href="#">-</a>
                             </td>
+                            <td class="text-truncate">
+
+                            </td>
                           {% endif %}
-                        <td>
-                            <a target="_blank" type="button" href="{% url 'recibo_detail' object.id %}">
-                                <button type="button" class="btn btn-dark">
-                                   Recibo
-                                </button>
-                            </a>
-                          </td>
+
                     </tr>
 
                      {% else %}
