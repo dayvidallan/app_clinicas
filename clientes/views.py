@@ -33,13 +33,16 @@ class PacienteList(ListView):
 
     def get(self, request):
         template_name = 'paciente_list.html'
-        empresa_logada = self.request.user.funcionario.user
+        object = Paciente.objects.all()
+        empresa_logada = self.request.user.funcionario.id
         perfil = Funcionario.objects.filter(user=empresa_logada)
         contex = {
 
             'perfil': perfil,
+            'object_list': object,
         }
         return render(request, template_name, contex)
+
 
 
     def get_queryset(self):

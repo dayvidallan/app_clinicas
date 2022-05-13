@@ -29,28 +29,20 @@ def recibo_list(request):
 
 class ReciboList(ListView):
     model = Financeiros
-    def get_queryset(self):
-        template_name = 'financeiros_list.html'
-        empresa_logada = self.request.user.profissional.nome
-        return Financeiros.objects.filter(
-            funcionario__nome=empresa_logada)
-
     template_name = 'financeiros_list.html'
 
+    def get(self, request):
+        template_name = 'financeiros_list.html'
+        empresa_logada = self.request.user.funcionario.id
+        object = Financeiros.objects.all()
+        perfil = Funcionario.objects.filter(user=empresa_logada)
+        contex = {
 
-    paginate_by = 10
+                'perfil': perfil,
+                'object_list': object,
 
-
-    def get_queryset(self):
-        queryset = super(ReciboList, self).get_queryset()
-        search = self.request.GET.get('search')
-        if search:
-            queryset = queryset.filter(
-                Q(paciente__nome__icontains=search) |
-                Q(paciente__cpf__icontains=search)
-            )
-        return queryset
-
+            }
+        return render(request, template_name, contex)
 
 
 class ReciboCreate(CreateView):

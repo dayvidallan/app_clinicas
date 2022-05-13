@@ -28,6 +28,7 @@
                   </a>
 
                  {% for perfil in perfil %}
+
                         {% if user.id == perfil.id %}
                           <tr>
                              <a target="_blank" href="/media/{{ perfil.upload }}">
@@ -52,6 +53,7 @@
         </div>
 
         <div class="card-body">
+
         {% if object_list %}
           <table class="table table-sm table-responsive-sm">
             <thead class="thead-dark">
@@ -65,34 +67,36 @@
               </tr>
             </thead>
             <tbody>
-            {% for object in object_list %}
-              <tr class="{% if event.priority == '1' %} table-success{% elif event.priority == '2' %} table-warning{% elif event.priority == '3' %} table-danger{% else %} table-default{% endif %}">
-                <td class="text-truncate">
-                  <a class="text-dark" href="#">{{ object.id }}</a>
-                </td>
 
-                <td>
-                  <a class="text" href="{% url 'paciente_edit' object.id %}">{{ object.nome }}</a>
-                </td>
-                <td class="text-truncate">
-                  <a class="text-dark" href="#">{{ object.cpf }}</a>
-                </td>
-                  <td class="text-truncate">
-                  <a class="text-dark" href="#">{{ object.telefone}}</a>
-                </td>
-                <td class="text-truncate">
-                   <a class="text-dark" href="#">{{ object.data_consulta}}</a>
-                </td>
-                  <td>
-                      <a type="button" href="{% url 'paciente_detail' object.id %}">
-                        <button type="button" class="btn btn-dark">
-                           Prontuário
-                        </button>
-                    </a>
-                  </td>
+                {% for object in object_list %}
+                  <tr class="{% if event.priority == '1' %} table-success{% elif event.priority == '2' %} table-warning{% elif event.priority == '3' %} table-danger{% else %} table-default{% endif %}">
+                    <td class="text-truncate">
+                      <a class="text-dark" href="#">{{ object.id }}</a>
+                    </td>
 
-              </tr>
-            {% endfor %}
+                    <td>
+                      <a class="text" href="{% url 'paciente_edit' object.id %}">{{ object.nome }}</a>
+                    </td>
+                    <td class="text-truncate">
+                      <a class="text-dark" href="#">{{ object.cpf }}</a>
+                    </td>
+                      <td class="text-truncate">
+                      <a class="text-dark" href="#">{{ object.telefone}}</a>
+                    </td>
+                    <td class="text-truncate">
+                       <a class="text-dark" href="#">{{ object.data_consulta}}</a>
+                    </td>
+                      <td>
+                          <a type="button" href="{% url 'paciente_detail' object.id %}">
+                            <button type="button" class="btn btn-dark">
+                               Prontuário
+                            </button>
+                        </a>
+                      </td>
+
+                  </tr>
+                {% endfor %}
+
             </tbody>
           </table>
           {% with events as paginated %}

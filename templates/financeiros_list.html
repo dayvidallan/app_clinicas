@@ -39,9 +39,7 @@
         {% if object_list %}
 
 
-
             {% for object in object_list %}
-
 
                 {% if user.id == object.profissional.id %}
                         <table class="table table-sm table-responsive-sm">
@@ -51,6 +49,7 @@
                                 <th>Nome</th>
                                 <th>CPF</th>
                                 <th>Valor</th>
+                                <th>Valor C/ Recibo</th>
                                 <th>Recibo</th>
                               </tr>
                             </thead>
@@ -70,16 +69,24 @@
                           <td class="text-truncate">
                           <a class="text-dark" href="#">{{ object.valor}}</a>
                         </td>
-                        <td class="text-truncate">
                           {% if object.recibo  %}
-                            <a target="_blank" type="button" href="{% url 'recibo_detail' object.id %}">
+                            <td class="text-truncate">
+                              <a class="text-dark" href="#">{{ object.valor}}</a>
+                            </td>
+                          {% else %}
+                            <td class="text-truncate">
+                              <a class="text-dark" href="#">-</a>
+                            </td>
+                          {% endif %}
+                        <td>
+                            <a type="button" href="{% url 'recibo_detail' object.id %}">
                                 <button type="button" class="btn btn-dark">
                                    Recibo
                                 </button>
                             </a>
-                          {% else %}
-                            <b>-</b>
-                          {% endif %}
+                          </td>
+                    </tr>
+
                      {% else %}
 
                     {% endif %}

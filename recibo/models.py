@@ -30,7 +30,7 @@ class Financeiros(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
     servico = models.CharField(max_length=100, unique=False)
     data = models.DateTimeField(default=timezone.now)
-    valor = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True, verbose_name='R$ Valor')
+    valor = models.CharField(max_length=11, blank=True, null=True, verbose_name='R$ Valor')
     observacao = models.TextField(null=True, blank=True)
     recibo = models.BooleanField(verbose_name='Gerar Recibo?', default=False)
 
