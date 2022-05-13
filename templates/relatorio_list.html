@@ -22,9 +22,7 @@
         {% if object_list %}
 
 
-            {% for object in object_list %}
 
-                {% if user.id == object.profissional.id %}
                         <table class="table table-sm table-responsive-sm">
                             <thead class="thead-dark">
                               <tr>
@@ -36,7 +34,9 @@
                               </tr>
                             </thead>
                             <tbody>
+            {% for object in object_list %}
 
+                {% if user.id == object.profissional.id %}
                     <tr class="{% if event.priority == '1' %} table-success{% elif event.priority == '2' %} table-warning{% elif event.priority == '3' %} table-danger{% else %} table-default{% endif %}">
 
                           <td>
