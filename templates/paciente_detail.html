@@ -83,12 +83,12 @@
               <br>
               <br>
             <tr>
-            {% if  object_list.upload == "" %}
+            {% if  object.upload == "" %}
               <th >Documentos:</th>
                 <a target="_blank" href="#"><td>{{ object.upload }}</td></a>
             <tr>
             {% else %}
-                       <th >Documentos:<a target="_blank" href="{{object_list.upload.url}}"> {{object.upload.upload}}</a></th>
+                       <th >Documentos:<a target="_blank" href="{{object_list.upload.url}}"> {{object.upload}}</a></th>
 
 
             {% endif %}
