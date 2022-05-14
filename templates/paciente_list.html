@@ -28,21 +28,23 @@
                   </a>
 
                  {% for perfil in perfil %}
-
                         {% if user.id == perfil.id %}
-                          <tr>
-                             <a target="_blank" href="{{ perfil.upload.url }}">
-                              <button type="button" class="btn btn-dark">
-                                 Receituário
-                              </button></a>
-                          </tr>
+                             {% if  perfil.upload == "" %}
+                                <a href="#">
+                                  <button type="button" class="btn btn-dark">
+                                     Receituário
+                                  </button></a>
+                             {% else %}
+                                      <tr>
+                                         <a target="_blank" href="{{ perfil.upload.url }}">
+                                          <button type="button" class="btn btn-dark">
+                                             Receituário
+                                          </button></a>
+                                      </tr>
+
+                             {% endif %}
+
                         {% else %}
-                            <tr>
-                              <a  href="#">
-                              <button type="button" class="btn btn-dark">
-                                 Receituário
-                              </button></a>
-                          </tr>
 
                         {% endif %}
 
