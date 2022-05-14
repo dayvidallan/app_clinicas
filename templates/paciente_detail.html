@@ -83,9 +83,15 @@
               <br>
               <br>
             <tr>
+            {% if  object_list.upload == "" %}
               <th >Documentos:</th>
-                <a target="_blank" href="{{ object.upload.url }}"><td>{{ object.upload }}</td></a>
+                <a target="_blank" href="#"><td>{{ object.upload }}</td></a>
             <tr>
+            {% else %}
+                       <th >Documentos:<a target="_blank" href="{{object_list.upload.url}}"> {{object.upload.upload}}</a></th>
+
+
+            {% endif %}
           </tbody></b>
 
       </div>
@@ -112,7 +118,15 @@
                      <br><br>
                             <th >Anamnesi: {{object_list.anamnesi}}</th>
                      <br><br>
-                            <th >Documentos: {{object_list.upload}}</th>
+                     {% if  object_list.upload == "" %}
+                      <th >Documentos:<a target="_blank" href="#"> {{object_list.upload}}</a></th>
+
+                     </div></b>
+                    {% else %}
+                       <th >Documentos:<a target="_blank" href="{{object_list.upload.url}}"> {{object_list.upload}}</a></th>
+
+                     </div></b>
+                    {% endif %}
 
                      </div></b>
             </div>

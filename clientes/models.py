@@ -45,14 +45,14 @@ class Procedimento(models.Model):
 class Consulta(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
     data_consulta = models.DateTimeField(default=timezone.now)
-    anamnesi = models.CharField(max_length=14, null=True, blank=True)
+    anamnesi = models.CharField(max_length=1000, null=True, blank=True)
     upload = models.FileField(upload_to='upload', null=True, blank=True, verbose_name='Documentos')
 
     class Meta:
         ordering = ('id',)
 
     def get_absolute_url(self):
-        return reverse_lazy('paciente_detail')
+        return reverse_lazy('paciente_list')
 
     def __ini__(self):
         return self.paciente
