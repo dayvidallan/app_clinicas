@@ -46,6 +46,7 @@
                                 <th>Nº</th>
                                 <th>Nome</th>
                                 <th>CPF</th>
+                                <th>Procedimento</th>
                                 <th>Valor</th>
                                 <th>Valor C/ Recibo</th>
                                 <th>Recibo</th>
@@ -66,6 +67,9 @@
                         </td>
                         <td class="text-truncate">
                           <a class="text-dark" href="#">{{ object.paciente.cpf }}</a>
+                        </td>
+                        <td class="text-truncate">
+                          <a class="text-dark" href="#">{{ object.procedimento.procedimeto }}</a>
                         </td>
                           <td class="text-truncate">
                           <a class="text-dark" href="#">{{ object.valor}}</a>

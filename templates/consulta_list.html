@@ -1,0 +1,116 @@
+{% extends "base.html" %}{% load static %}
+{% block content %}
+    {% include "layouts/navbar.html" %}
+   <div id="content-stage">
+          <div class="container-fluid"></div>
+               <section id="migalhas" class="administracao">
+                  <div class="container-fluid">
+                      <div class="row">
+                          <div class="col-lg-12 col-md-12">
+                            <a href="/">Início <i class="fa fa-angle-right"></i></a>
+
+                          </div>
+                      </div>
+                  </div>
+
+              </section>
+   </div>
+    <main role="main">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between">
+          <h1>Prontuário</h1>
+          <div class="page-header">
+            <span class="pull-right">
+                  <a  href="{% url 'paciente_add' %}">
+                      <button type="button" class="btn btn-secondary">
+                        <span class="fa fa-plus"></span> Adicionar
+                      </button>
+                  </a>
+
+                 {% for perfil in perfil %}
+
+                        {% if user.id == perfil.id %}
+                          <tr>
+                             <a target="_blank" href="{{ perfil.upload.url }}">
+                              <button type="button" class="btn btn-dark">
+                                 Receituário
+                              </button></a>
+                          </tr>
+                        {% else %}
+                            <tr>
+                              <a  href="#">
+                              <button type="button" class="btn btn-dark">
+                                 Receituário
+                              </button></a>
+                          </tr>
+
+                        {% endif %}
+
+                {% endfor %}
+
+            </span>
+          </div>
+        </div>
+
+        <div class="card-body">
+
+        {% if object_list %}
+          <table class="table table-sm table-responsive-sm">
+            <thead class="thead-dark">
+              <tr>
+                <th>Nº</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>TELEFONE</th>
+                <th>DATA DA CONSULTA</th>
+                <th>PRONTUÁRIO</th>
+              </tr>
+            </thead>
+            <tbody>
+
+                {% for object in object_list %}
+                  <tr class="{% if event.priority == '1' %} table-success{% elif event.priority == '2' %} table-warning{% elif event.priority == '3' %} table-danger{% else %} table-default{% endif %}">
+                    <td class="text-truncate">
+                      <a class="text-dark" href="#">{{ object.id }}</a>
+                    </td>
+
+                    <td>
+                      <a class="text" href="{% url 'paciente_edit' object.id %}">{{ object.nome }}</a>
+                    </td>
+                    <td class="text-truncate">
+                      <a class="text-dark" href="#">{{ object.cpf }}</a>
+                    </td>
+                      <td class="text-truncate">
+                      <a class="text-dark" href="#">{{ object.telefone}}</a>
+                    </td>
+                    <td class="text-truncate">
+                       <a class="text-dark" href="#">{{ object.data_consulta}}</a>
+                    </td>
+                      <td>
+                          <a type="button" href="{% url 'paciente_detail' object.id %}">
+                            <button type="button" class="btn btn-dark">
+                               Prontuário
+                            </button>
+                        </a>
+                      </td>
+
+                  </tr>
+                {% endfor %}
+
+            </tbody>
+          </table>
+          {% with events as paginated %}
+            {% include "layouts/pagination.html" %}
+          {% endwith %}
+          <hr/>
+          <p>Você tem {{ total }} evento{{ total|pluralize }} registrado{{ total|pluralize }}.</p>
+        {% else %}
+          <div class="alert alert-secondary text-center">
+            Sem eventos cadastrados.
+          </div>
+        {% endif %}
+        </div>
+      </div>
+    </main>
+{% include "modals/new.html" %}
+{% endblock %}

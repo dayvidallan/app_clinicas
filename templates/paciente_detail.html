@@ -95,33 +95,35 @@
               <span class="fa fa-pencil"></span> Editar
             </button>
           </a>
-            <a href="{% url 'paciente_edit' object.id %}">
+            <a href="{% url 'consulta_add' %}">
             <button type="button" class="btn btn-dark">
               <span class="fa fa-plus"></span> Registros
             </button>
           </a>
       </div>
+ {% for object_list in object_list %}
+
         <div class="card ">
 
             <div class="card "><b> <br>
                  <div class="card-header">
-                            <th >Anamnesi:</th>
+
+                            <th >Data da Consulta: {{object_list.data_consulta}}</th>
+                     <br><br>
+                            <th >Anamnesi: {{object_list.anamnesi}}</th>
+                     <br><br>
+                            <th >Documentos: {{object_list.upload}}</th>
 
                      </div></b>
             </div>
-           <div class="card-body">
-            <b>
 
-                <tr>
 
-                        <a class="text-dark" target="_blank" href="#"><td>{{ object.anamnesi }}</td></a>
-                    <tr>
-                </tr>
-             </b>
-          </div>
-        </div>
+       {% endfor %}
+            <br><br>
+
 
     </div>
+
 
 
 

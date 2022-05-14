@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Paciente
+from .models import Paciente, Consulta
 
 
 class PacienteForm(forms.ModelForm):
@@ -13,3 +13,8 @@ class PacienteForm(forms.ModelForm):
                  'data_consulta', 'anamnesi', 'upload'
 
 
+class ConsultaForm(forms.ModelForm):
+
+    class Meta:
+        model = Consulta
+        fields = 'paciente', 'data_consulta', 'anamnesi', 'upload'

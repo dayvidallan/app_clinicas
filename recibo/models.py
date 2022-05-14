@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse_lazy
 from clientes.models import Paciente
 from funcionarios.models import Funcionario
+from clientes.models import Procedimento
 from django.utils import timezone
 from django.db.models import Sum
 
@@ -28,6 +29,7 @@ class Financeiro(models.Model):
 class Financeiros(models.Model):
     profissional = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
+    procedimento = models.ForeignKey(Procedimento, on_delete=models.CASCADE, blank=True, null=True)
     servico = models.CharField(max_length=100, unique=False)
     data = models.DateTimeField(default=timezone.now)
     valor = models.CharField(max_length=11, blank=True, null=True, verbose_name='R$ Valor')
@@ -40,11 +42,10 @@ class Financeiros(models.Model):
     def get_absolute_url(self):
         return reverse_lazy('financeiros_list')
 
+    @property
+    def total_faturamento(self):
+        total = Financeiros.objects.all().aggregate(Sum('valor'))['valor__sum']
 
-    def total_horas_extra(self):
-        total = self.Financeiros.all(
-            ).aggregate(
-            Sum('valor'))['valor__sum']
         return total or 0
 
 

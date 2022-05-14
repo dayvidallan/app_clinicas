@@ -9,7 +9,7 @@ class FinanceirosForm(ModelForm):
 
     class Meta:
         model = Financeiros
-        fields = 'profissional', 'paciente', 'servico', 'data', 'valor', 'observacao', 'recibo'
+        fields = 'profissional', 'paciente', 'procedimento', 'servico', 'data', 'valor', 'observacao', 'recibo'
 
         def __init__(self, user=None, *args, **kwargs):
             super(FinanceirosForm, self).__init__(*args, **kwargs)
